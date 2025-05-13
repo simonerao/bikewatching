@@ -76,9 +76,9 @@ map.on('load', async () => {
     .style("height", "100%")
     .style("pointer-events", "none");
 
-  radiusScale = d3.scaleSqrt()
-    .domain([0, d3.max(stations, d => d.totalTraffic)])
-    .range([0, 25]);
+radiusScale = d3.scaleSqrt()
+  .domain([0, d3.max(stations, d => d.totalTraffic)])
+  .range([2, 12]); // Ad
 
 let stationFlow = d3.scaleQuantize().domain([0, 1]).range([0, 0.5, 1]);
 
@@ -137,7 +137,9 @@ let stationFlow = d3.scaleQuantize().domain([0, 1]).range([0, 0.5, 1]);
   function updateScatterPlot(timeFilter) {
     const filteredStations = computeStationTraffic(baseStations, timeFilter);
     const maxTraffic = d3.max(filteredStations, d => d.totalTraffic);
-    radiusScale.range(timeFilter === -1 ? [0, 25] : [3, 50]).domain([0, maxTraffic]);
+    const newRange = timeFilter === -1 ? [2, 12] : [2, 20];
+    radiusScale.domain([0, maxTraffic]).range(newRange);
+
   
     const circles = svg.selectAll('circle')
       .data(filteredStations, d => d.short_name);
