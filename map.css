@@ -1,0 +1,38 @@
+html,
+body {
+  margin: 0;
+  padding: 5;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+#map {
+    position: relative;  /* Position the map container relatively so SVG can be placed on top */
+    width: 100%;         /* Full width of the viewport */
+    height: 100vh;       /* Full height of the viewport */
+  }
+  
+  #map svg {
+    position: absolute;  /* Position the SVG absolutely within the map container */
+    z-index: 1;          /* Ensure the SVG is above the map */
+    width: 100%;         /* Fill the width of the map container */
+    height: 100%;        /* Fill the height of the map container */
+    pointer-events: none;
+  }
+
+/* CSS for the circles inside SVG */
+#map svg circle {
+    fill: steelblue;        /* Set the fill color of the circles */
+    fill-opacity: 0.6;      /* Set the fill opacity to 60% */
+    stroke: white;          /* Set the stroke color of the circles */
+    stroke-width: 1;        /* Set the stroke width to 1px */
+    pointer-events: auto;   /* Allow pointer events on the circles for tooltips */
+  }
+  
+  
+  
+  
+  
